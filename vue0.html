@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>はじめてのVue.js</title>
+
+<!--トップページ-->
+<div id="app">
+  <router-link to = "/concept">コンセプト</router-link>
+  <router-link to = "/author">作成者</router-link>
+  <router-view></router-view>
+</div>
+
+<script src="http://unpkg.com/vue@2.5.17"></script>
+<script src="http://unpkg.com/vue-router@3.0.1"></script>
+
+<!--コンセプトページのテンプレ-->
+<script type = "text/x-template" id = "page-concept">
+  <div>
+    <h1>コンセプト</h1>
+  </div>
+</script>
+
+
+
+<script>
+
+  //コンセプトコンポーネント
+  var PageConcept = {
+    template:'#page-concept',
+  }
+
+  var router = new VueRouter({
+    routes:[
+      {
+        path:'/concept',
+        component:PageConcept
+      },
+      {
+        path:'/author',
+        conponent:{
+          template:'<div>ページを作った人です</div>'
+        }
+      }
+    ]
+  })
+
+  //ルーターインスタンスを渡す
+  var app = new Vue({
+    router:router
+  }).$mount('#app')
+
+</script>
+
+</html>
